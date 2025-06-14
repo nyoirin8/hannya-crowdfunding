@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
+  // 修正後（空オブジェクトに）
+experimental: {
+  serverActions: {},
+}
+,
 };
 
 export default nextConfig;

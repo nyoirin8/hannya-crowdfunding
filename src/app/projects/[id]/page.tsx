@@ -1,14 +1,18 @@
+// src/app/projects/[id]/page.tsx
+import { notFound } from 'next/navigation';
+
 const projects = [
   { id: 1, title: '英語版般若心経 翻訳プロジェクト' },
   { id: 2, title: 'フランス語版般若心経 翻訳プロジェクト' },
   { id: 3, title: 'スペイン語版般若心経 翻訳プロジェクト' },
 ];
 
-export default function ProjectDetailPage({ params }: { params: { id: string } }) {
-  const project = projects.find(p => p.id === parseInt(params.id));
+export default async function ProjectDetailPage({ params }: any) {
+  const projectId = parseInt(params.id, 10);
+  const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
-    return <div className="p-8 text-red-600">プロジェクトが見つかりません。</div>;
+    notFound();
   }
 
   return (
